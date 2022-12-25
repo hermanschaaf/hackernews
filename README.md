@@ -1,5 +1,7 @@
 # Hacker News API Go Client
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/hermanschaaf/hackernews.svg)](https://pkg.go.dev/github.com/hermanschaaf/hackernews) 
+
 This is an up-to-date Go client for the [Hacker News API](https://github.com/HackerNews/API).
 
 - Supports Go modules
