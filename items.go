@@ -89,7 +89,7 @@ func (c *Client) AskStories(ctx context.Context) ([]int, error) {
 
 // ShowStories returns up to 200 of the latest show stories.
 func (c *Client) ShowStories(ctx context.Context) ([]int, error) {
-	b, err := c.get(ctx,"/v0/showstories.json")
+	b, err := c.get(ctx, "/v0/showstories.json")
 	if err != nil {
 		return nil, fmt.Errorf("while getting show stories: %w", err)
 	}

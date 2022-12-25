@@ -8,11 +8,12 @@ import (
 )
 
 const defaultURL = "https://hacker-news.firebaseio.com"
+
 var defaultHTTPClient = http.DefaultClient
 
 type Client struct {
 	baseURL string
-	client *http.Client
+	client  *http.Client
 }
 
 type Option func(*Client)
@@ -29,10 +30,10 @@ func WithHTTPClient(client *http.Client) Option {
 	}
 }
 
-func NewClient(opts... Option) *Client {
+func NewClient(opts ...Option) *Client {
 	c := &Client{
 		baseURL: defaultURL,
-		client: defaultHTTPClient,
+		client:  defaultHTTPClient,
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -41,7 +42,7 @@ func NewClient(opts... Option) *Client {
 }
 
 func (c *Client) get(ctx context.Context, path string) ([]byte, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.baseURL + path, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.baseURL+path, nil)
 	if err != nil {
 		return nil, fmt.Errorf("while creating request: %w", err)
 	}

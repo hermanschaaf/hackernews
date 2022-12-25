@@ -7,7 +7,7 @@ import (
 )
 
 type Updates struct {
-	Items []int `json:"items"`
+	Items    []int    `json:"items"`
 	Profiles []string `json:"profiles"`
 }
 

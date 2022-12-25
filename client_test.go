@@ -51,7 +51,7 @@ func ExampleClient_Item() {
 
 	// Print the title of a specific story.
 	ctx := context.Background()
-	story, err := client.GetItem(ctx,34121082)
+	story, err := client.GetItem(ctx, 34121082)
 	if err != nil {
 		log.Fatal(err)
 	}
