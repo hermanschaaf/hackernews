@@ -30,7 +30,7 @@ import (
 
 func main() {
     client := hackernews.NewClient()
-	ctx := context.Background()
+    ctx := context.Background()
 
     // Get the top 10 stories
     topStories, err := client.TopStories(ctx)
