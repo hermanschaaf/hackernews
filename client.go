@@ -41,6 +41,14 @@ func NewClient(opts ...Option) *Client {
 	return c
 }
 
+type HTTPError struct {
+	Code int
+}
+
+func (e HTTPError) Error() string {
+	return fmt.Sprintf("status %d (%v)", e.Code, http.StatusText(e.Code))
+}
+
 func (c *Client) get(ctx context.Context, path string) ([]byte, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, c.baseURL+path, nil)
 	if err != nil {
@@ -51,7 +59,7 @@ func (c *Client) get(ctx context.Context, path string) ([]byte, error) {
 		return nil, err
 	}
 	if r.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("got status %d: %w", r.StatusCode, err)
+		return nil, HTTPError{Code: r.StatusCode}
 	}
 	defer r.Body.Close()
 	return io.ReadAll(r.Body)
